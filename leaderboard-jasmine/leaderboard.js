@@ -4,7 +4,7 @@
 Players = new Meteor.Collection("players");
 
 /**
- * Separate player logic into an own service singleton for better testability and reusability.
+ * Separatsde player logic into an own service singleton for better testability and reusability.
  * @type {{}}
  */
 PlayersService = {
