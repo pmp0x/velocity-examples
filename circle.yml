@@ -5,3 +5,5 @@ dependencies:
 test:
   override:
     - cd leaderboard-jasmine && ~/meteor/meteor --test
+  post:
+    - cd leaderboard-jasmine && ~/meteor/meteor build $CIRCLE_ARTIFACTS --server app.teneoapp.de 
