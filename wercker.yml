@@ -7,5 +7,5 @@ build:
         # Execute the bundle install step, a step provided by wercker
         - git clone https://github.com/meteor/meteor.git $WERCKER_ROOT/meteor
         # Execute a custom script step.
-        - $WERCKER_ROOT/meteor/meteor --test
+        - $WERCKER_ROOT/meteor/meteor --test:
           cwd: leaderboard-jasmine
