@@ -2,14 +2,30 @@ box: wercker/nodejs
 no-response-timeout: 12
 services:
     - wercker/mongodb
+# build:
+#     steps:
+#         # Execute the bundle install step, a step provided by wercker
+#         #- git clone https://github.com/meteor/meteor.git $WERCKER_ROOT/meteor
+#         - script:
+#             name: echo python information
+#             code: |
+#                 echo "ls $(ls -la)"
+#                 echo "dir $(pwd)"
+
 build:
-    steps:
-        # Execute the bundle install step, a step provided by wercker
-        #- git clone https://github.com/meteor/meteor.git $WERCKER_ROOT/meteor
-        - script:
-            name: echo python information
-            code: |
-                echo "ls $(ls -la)"
-                echo "dir $(pwd)"
+  # The steps that will be executed on build
+  steps:
+    # A step that executes `npm install` command
+    #- npm-install
+    # A step that executes `npm test` command
+    #- npm-test
+
+    # A custom script step, name value is used in the UI
+    # and the code value contains the command that get executed
+    - script:
+        name: echo nodejs information
+        code: |
+          echo "ls $(ls -la) running"
+          echo "dir $(pwd) "
         # Execute a custom script step.
         
