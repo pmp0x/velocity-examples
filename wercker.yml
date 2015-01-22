@@ -17,21 +17,24 @@ build:
   steps:
     # A step that executes `npm install` command
     - script:
-        name: Checkout meteor
-        code: git clone https://github.com/meteor/meteor.git ./meteor-raw
+        name: Update meteor
+        code: |-
+          meteor --version
+          meteor update
+          meteor --version
+    - script:
+        name: echo nodejs information
+        code: |
+          echo "node version $(node -v) running"
+          echo "npm version $(npm -v) running"
+    - script:
+        name: Get Meteor
+        code: curl https://install.meteor.com/ | sh
     #- npm-install
     # A step that executes `npm test` command
     #- npm-test
     - script:
-        name: Run meteor Test
-        code: cd leaderboard-jasmine && ../meteor-raw/meteor --test
-    
-    # A custom script step, name value is used in the UI
-    # and the code value contains the command that get executed
-    - script:
-        name: echo nodejs information
-        code: |
-          echo "ls $(ls -la) running"
-          echo "dir $(pwd) "
-        # Execute a custom script step.
+        name: Check meteor
+        code: echo "meteor version $(meteor --version)"
+  
         
