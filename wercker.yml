@@ -37,3 +37,10 @@ build:
     - script:
         name: Testing
         code:  JASMINE_BROWSER=PhantomJS cd leaderboard-jasmine && meteor --test
+
+
+deploy:
+  steps:
+    - script:
+      name: build artifact
+      code: cd leaderboard-jasmine && ~/meteor/meteor build $WERCKER_OUTPUT_DIR --server app.teneoapp.de 
