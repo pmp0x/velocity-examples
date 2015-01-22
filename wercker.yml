@@ -16,10 +16,16 @@ build:
   # The steps that will be executed on build
   steps:
     # A step that executes `npm install` command
+    - script:
+        name: Checkout meteor
+        code: git clone https://github.com/meteor/meteor.git ./meteor-raw
     #- npm-install
     # A step that executes `npm test` command
     #- npm-test
-
+    - script:
+        name: Run meteor Test
+        code: cd leaderboard-jasmine && ../meteor-raw/meteor --test
+    
     # A custom script step, name value is used in the UI
     # and the code value contains the command that get executed
     - script:
