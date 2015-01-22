@@ -18,7 +18,7 @@ build:
     # A step that executes `npm install` command
     - script:
         name: Get meteor
-        code: |
+        code: |-
           if [ -f "$WERCKER_CACHE_DIR/meteor/meteor" ]; then
               info "meteor found in cache"
           else
