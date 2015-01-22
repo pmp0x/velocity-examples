@@ -5,7 +5,7 @@ services:
 build:
     steps:
         # Execute the bundle install step, a step provided by wercker
-        - git clone https://github.com/meteor/meteor.git $WERCKER_ROOT/meteor
+        #- git clone https://github.com/meteor/meteor.git $WERCKER_ROOT/meteor
         - script:
             name: echo python information
             code: |
