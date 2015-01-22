@@ -17,12 +17,6 @@ build:
   steps:
     # A step that executes `npm install` command
     - script:
-        name: Update meteor
-        code: |-
-          meteor --version
-          meteor update
-          meteor --version
-    - script:
         name: echo nodejs information
         code: |
           echo "node version $(node -v) running"
