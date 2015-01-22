@@ -17,10 +17,15 @@ build:
   steps:
     # A step that executes `npm install` command
     - script:
-        name: echo nodejs information
+        name: Get meteor
         code: |
-          echo "node version $(node -v) running"
-          echo "npm version $(npm -v) running"
+          if [ -f "$WERCKER_CACHE_DIR/meteor/meteor" ]; then
+              info "meteor found in cache"
+          else
+              debug "meteor not found in cache, will download"
+              curl https://install.meteor.com/ | sh
+          fi
+          
     - script:
         name: Get Meteor
         code: curl https://install.meteor.com/ | sh
@@ -34,7 +39,8 @@ build:
     - script:
         name: Check meteor
         code: echo "meteor version $(meteor --version)"
+        code: echo "meteor version $(meteor --version)"
   
     - script:
         name: Testing
-        code: cd leaderboard-jasmine && meteor --test
+        code:  JASMINE_BROWSER=PhantomJS cd leaderboard-jasmine && meteor --test
