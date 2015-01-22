@@ -5,6 +5,6 @@ services:
 build:
     steps:
         # Execute the bundle install step, a step provided by wercker
-        - git clone https://github.com/meteor/meteor.git ~/meteor
+        - git clone https://github.com/meteor/meteor.git $WERCKER_ROOT/meteor
         # Execute a custom script step.
-        - cd leaderboard-jasmine && ~/meteor/meteor --test
+        - cd $WERCKER_SOURCE_DIR/leaderboard-jasmine && $WERCKER_ROOT/meteor/meteor --test
