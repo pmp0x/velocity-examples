@@ -1,0 +1,10 @@
+box: wercker/nodejs
+no-response-timeout: 12
+services:
+    - wercker/mongodb
+build:
+    steps:
+        # Execute the bundle install step, a step provided by wercker
+        - git clone https://github.com/meteor/meteor.git ~/meteor
+        # Execute a custom script step.
+        - cd leaderboard-jasmine && ~/meteor/meteor --test
