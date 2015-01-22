@@ -18,17 +18,11 @@ build:
     # A step that executes `npm install` command
     - script:
         name: Get meteor
-        code: |-
-          if [ -f "$WERCKER_CACHE_DIR/meteor/meteor" ]; then
-              info "meteor found in cache"
-          else
-              debug "meteor not found in cache, will download"
-              curl https://install.meteor.com/ | sh
-          fi
-          
-    - script:
-        name: Get Meteor
         code: curl https://install.meteor.com/ | sh
+          
+    # - script:
+    #     name: Get Meteor
+    #     code: curl https://install.meteor.com/ | sh
     #- npm-install
     # A step that executes `npm test` command
     #- npm-test
@@ -37,9 +31,8 @@ build:
         code: echo "meteor version $(meteor --version)"
 
     - script:
-        name: Check meteor
-        code: echo "meteor version $(meteor --version)"
-        code: echo "meteor version $(meteor --version)"
+        name: NPM version
+        code: echo "npm version $(npm --version)"
   
     - script:
         name: Testing
