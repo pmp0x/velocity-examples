@@ -30,5 +30,11 @@ build:
     - script:
         name: Check meteor
         code: echo "meteor version $(meteor --version)"
+
+    - script:
+        name: Check meteor
+        code: echo "meteor version $(meteor --version)"
   
-        
+    - script:
+        name: Testing
+        code: cd leaderboard-jasmine && meteor --test
