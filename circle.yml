@@ -1,7 +1,14 @@
+general:
+  # build_dir: api
+machine:
+  environment:
+    METEOR_HOME: ~/meteor
+
 dependencies:
   pre:
     - git clone https://github.com/meteor/meteor.git ~/meteor
-
+  cache_directories:
+    - "~/meteor"
 test:
   override:
     - cd leaderboard-jasmine && ~/meteor/meteor --test
