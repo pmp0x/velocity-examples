@@ -7,9 +7,9 @@ build:
         # Execute the bundle install step, a step provided by wercker
         - git clone https://github.com/meteor/meteor.git $WERCKER_ROOT/meteor
         - script:
-          name: echo python information
-          code: |
-            echo "ls $(ls -la)"
-            echo "dir $(pwd)"
+            name: echo python information
+            code: |
+                echo "ls $(ls -la)"
+                echo "dir $(pwd)"
         # Execute a custom script step.
         
