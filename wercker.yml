@@ -1,4 +1,4 @@
-box: danieldent/meteor:latest
+box: nodesource / trusty
 no-response-timeout: 12
 services:
     - wercker/mongodb
