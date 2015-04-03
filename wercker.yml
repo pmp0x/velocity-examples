@@ -1,35 +1,17 @@
 box: nodesource/trusty
-no-response-timeout: 12
-services:
-    - wercker/mongodb
-# build:
-#     steps:
-#         # Execute the bundle install step, a step provided by wercker
-#         #- git clone https://github.com/meteor/meteor.git $WERCKER_ROOT/meteor
-#         - script:
-#             name: echo python information
-#             code: |
-#                 echo "ls $(ls -la)"
-#                 echo "dir $(pwd)"
-
+# Build definition
 build:
   # The steps that will be executed on build
   steps:
     # A step that executes `npm install` command
+    - npm-install
+    # A step that executes `npm test` command
+    - npm-test
+
+    # A custom script step, name value is used in the UI
+    # and the code value contains the command that get executed
     - script:
-        name: NPM version
-        code: echo "npm version $(npm --version)"
-
-    - script:
-        name: Testing
-        code:  JASMINE_BROWSER=PhantomJS cd leaderboard-jasmine && meteor --test
-
-
-deploy:
-  steps:
-    - internal/docker-push:
-        username: $USERNAME
-        password: $PASSWORD
-        tag: 0.0.1
-        repository: pmp0x/teneo-app/
-        registry: https://registry.hub.docker.com
+        name: echo nodejs information
+        code: |
+          echo "node version $(node -v) running"
+          echo "npm version $(npm -v) running"
