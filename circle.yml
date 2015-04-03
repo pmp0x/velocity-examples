@@ -3,8 +3,6 @@ general:
 machine:
   services:
     - docker
-  environment:
-    METEOR_HOME: ~/meteor
 
 dependencies:
   override:
