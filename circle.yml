@@ -1,16 +1,17 @@
 general:
   # build_dir: api
 machine:
+  services:
+    - docker
   environment:
     METEOR_HOME: ~/meteor
 
 dependencies:
-  pre:
-    - if [ ! -d ~/meteor ]; then git clone https://github.com/meteor/meteor.git ~/meteor; fi
-  cache_directories:
-    - "~/meteor"
+  override:
+    - docker info
+    - docker build -t teneo .
 test:
   override:
     - cd leaderboard-jasmine && ~/meteor/meteor --test
   post:
-    - cd leaderboard-jasmine && ~/meteor/meteor build $CIRCLE_ARTIFACTS --server app.teneoapp.de 
+    - cd leaderboard-jasmine && ~/meteor/meteor build $CIRCLE_ARTIFACTS --server app.teneoapp.de
