@@ -1,4 +1,4 @@
-box: danieldent/meteor
+box: danieldent/meteor:latest
 no-response-timeout: 12
 services:
     - wercker/mongodb
@@ -23,3 +23,13 @@ build:
     - script:
         name: Testing
         code:  JASMINE_BROWSER=PhantomJS cd leaderboard-jasmine && meteor --test
+
+
+deploy:
+  steps:
+    - internal/docker-push:
+        username: $USERNAME
+        password: $PASSWORD
+        tag: 0.0.1
+        repository: pmp0x/teneo-app/
+        registry: https://registry.hub.docker.com
