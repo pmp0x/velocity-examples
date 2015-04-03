@@ -1,4 +1,4 @@
-box: nodesource / trusty
+box: nodesource/trusty
 no-response-timeout: 12
 services:
     - wercker/mongodb
