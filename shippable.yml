@@ -1,3 +1,4 @@
+build_image: danieldent/meteor:1.1
 # Language setting
 language: node_js
 
@@ -6,21 +7,15 @@ node_js:
   - 0.10.25
 
 # The path for Xunit to output test reports
-env:
-  
+
 services:
   - mongodb
 
-# Create directories for test and coverage reports
-before_script:
-  - git clone https://github.com/meteor/meteor.git ~/meteor
-  - export PATH=~/meteor/:$PATH
 
 # Running the tests with grunt
 script:
   - cd leaderboard-jasmine
-  - METEOR_PATH=~/meteor meteor --test
+  - meteor --test
 
 # Tell istanbul to generate a coverage report
-after_script:
-  
+commit_container: pmp0x/teneo-app
