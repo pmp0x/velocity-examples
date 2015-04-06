@@ -8,7 +8,7 @@ dependencies:
   override:
     - docker info
     - curl https://install.meteor.com | /bin/sh
-    - cd leaderboard-jasmine && docker build -t teneo .
+
 test:
   override:
     - cd leaderboard-jasmine && meteor --test
@@ -19,5 +19,6 @@ deployment:
   hub:
     branch: master
     commands:
+      - cd leaderboard-jasmine && docker build -t teneo .
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push pmp0x/Teneo-App
